@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import { dbFirebase } from '../Config/connectFirebase'
-import S101Page from '../Component/S101Page'
+import RoomPage from '../Component/RoomPage'
 import 'bootstrap/dist/css/bootstrap.css';
 
 var numPerple = dbFirebase.ref('UserinRoom');
@@ -69,28 +69,26 @@ export var S101 = React.createClass({
     render: function () {
         return (
             <div>
-                <div className="row">
-                        <div className="col-md-12">
-                            <div className="well">
-                                <center>
-                                    <h4>S101</h4>
-                                    <hr />
-                                    <h4>แสงสว่าง</h4>
-                                    <div>
-                                        <button id="button"></button>
-                                        <button id="button1" style={{ display: 'none' }}></button>
-                                    </div>
-                                    <br></br>
-                                    <h4>เครื่องปรับอากาศ </h4>
-                                    <div>
-                                        <button id="button"></button>
-                                        <button id="button1" style={{ display: 'none' }}></button>
-                                    </div>
-                                    <br></br>
-                                    <h4>จำนวนคน <p id="userinRoomS101">0</p></h4>
-                                </center>
+                <div className="col-md-12">
+                    <div className="well">
+                        <center>
+                            <h4>S101</h4>
+                            <hr />
+                            <h4>แสงสว่าง</h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
                             </div>
-                        </div>
+                            <br></br>
+                            <h4>เครื่องปรับอากาศ </h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
+                            </div>
+                            <br></br>
+                            <h4>จำนวนคน <p id="userinRoomS101">0</p></h4>
+                        </center>
+                    </div>
                 </div>
             </div>
         )
@@ -101,9 +99,9 @@ export var S102 = React.createClass({
     render: function () {
         return (
             <div>
-                <div className="row">
-                    <div className="col-md-auto">
-                        <div className="well">
+                <div className="col-md-12">
+                    <div className="well">
+                        <center>
                             <h4>S102</h4>
                             <hr />
                             <h4>แสงสว่าง</h4>
@@ -119,7 +117,67 @@ export var S102 = React.createClass({
                             </div>
                             <br></br>
                             <h4>จำนวนคน <p id="userinRoomS102">0</p></h4>
-                        </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+});
+
+export var S103 = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <div className="col-md-12">
+                    <div className="well">
+                        <center>
+                            <h4>S103</h4>
+                            <hr />
+                            <h4>แสงสว่าง</h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
+                            </div>
+                            <br></br>
+                            <h4>เครื่องปรับอากาศ </h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
+                            </div>
+                            <br></br>
+                            <h4>จำนวนคน <p id="userinRoomS103">0</p></h4>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+});
+
+export var S104 = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <div className="col-md-12">
+                    <div className="well">
+                        <center>
+                            <h4>S104</h4>
+                            <hr />
+                            <h4>แสงสว่าง</h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
+                            </div>
+                            <br></br>
+                            <h4>เครื่องปรับอากาศ </h4>
+                            <div>
+                                <button id="button"></button>
+                                <button id="button1" style={{ display: 'none' }}></button>
+                            </div>
+                            <br></br>
+                            <h4>จำนวนคน <p id="userinRoomS104">0</p></h4>
+                        </center>
                     </div>
                 </div>
             </div>

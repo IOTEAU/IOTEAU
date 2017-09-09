@@ -1,116 +1,22 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Redirect, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect, Switch, Link } from 'react-router-dom';
 import $ from "jquery";
-import Highcharts from 'highcharts'
+import Dropdown from 'react-dropdown'
 import { ReactPageClick } from 'react-page-click';
 import { saveUser } from '../Config/Authentication';
 import { firebaseAuth, dbRef, user } from '../Config/connectFirebase';
 import { dbFirebase } from '../Config/connectFirebase'
 import fLogin from '../Component/formLoginComplete';
 import Login from '../Component/Login';
-import FormPage, { S101, S102 } from '../Component/FormPage';
-import S101Page from '../Component/S101Page';
+import FormPage, { S101, S102, S103, S104 } from '../Component/FormPage';
+import { S101Page, S102Page, S103Page, S104Page } from '../Component/RoomPage';
 import '../loading.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../docs.css';
 
 
 
-function name() {
-    var para;
-    var num1 = dbFirebase.ref().child('energy'); //เปลี่ยนค่าตัวเลข มาแสดงกราฟ
-    num1.on('child_added', function (snapshot) {
-        para = snapshot.val();
-        // console.log(para)
 
-    });
-    return para
-}
-
-$(document).ready(function () {
-    Highcharts.setOptions({
-        global: {
-            useUTC: false
-        }
-    });
-
-    var numPerple = dbFirebase.ref('UserinRoom');
-    var numPerples = numPerple.on('value', function (snapshot) {
-        // conssole.log("UserinRoom:" + snapshot.val());
-        var snap = snapshot.val();
-
-
-        Highcharts.chart('container', {
-            chart: {
-                type: 'spline',
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-
-                        // set up the updating of the chart each second
-                        var series = this.series[0];
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = name();
-                            series.addPoint([x, y], true, true);
-                        }, 1000);
-                    }
-                }
-            },
-
-            title: {
-                text: 'ตารางการใช้ไฟ'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Value'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: 'Random data',
-                data: (function () {
-
-
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: name()
-                        });
-                    }
-                    return data;
-                }())
-            }]
-        });
-    });
-});
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
     return (
@@ -133,52 +39,29 @@ function PublicRoute({ component: Component, authed, ...rest }) {
         />
     )
 }
+$('#unlock').prop('disabled', true);
 
-// Modol Window
-const styles = {
-    popup: {
-        position: 'fixed',
-        top: '6%',
-        left: '6%',
-        // width: '70%',
-        // height: '70%',
-        marginTop: 0,
-        marginLeft: 0,
-        // fontSize: 30,
-        textAlign: 'center',
-        background: 'rgba(255,255,255,0.9)',
-        borderRadius: 1
-    },
-    shade: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(0,0,0,0.3)'
-    },
-    content: {
-        padding: 0
-    }
-};
-const Modol = React.createClass({
-    propTypes: {
-        // onClose: React.propTypes.func.isRequired
-    },
-    render() {
-        const { onClose, ...props } = this.props;
-        return (
-            <div>
-                <div style={styles.shade} />
-                <ReactPageClick notify={this.props.onClose}>
-                    <div style={styles.popup}>
-                        <div style={styles.content} {...props} />
-                    </div>
-                </ReactPageClick>
-            </div>
-        )
-    }
-});
+function goS101() {
+    $('#idS101').css({ display: 'block' });
+    $('#allRoom').css({ display: 'none' });
+}
+function goS102() {
+    $('#idS102').css({ display: 'block' });
+    $('#allRoom').css({ display: 'none' });
+}
+function goS103() {
+    $('#idS103').css({ display: 'block' });
+    $('#allRoom').css({ display: 'none' });
+}
+function goS104() {
+    $('#idS104').css({ display: 'block' });
+    $('#allRoom').css({ display: 'none' });
+}
+const options = [
+    'ตึก A', 'ตึก C', 'ตึก S','ตึก M'
+  ]
+
+
 
 export default class Home extends Component {
 
@@ -187,7 +70,7 @@ export default class Home extends Component {
         loading: true,
     }
     getInitialState() {
-        showS101Page: false;
+        showS101Page: true;
         showS102Page: false;
         showS103Page: false;
         showS104Page: false;
@@ -198,12 +81,19 @@ export default class Home extends Component {
                 this.setState({
                     authed: true,
                     loading: false,
-                })
+                    showS101Page: true
+                });
+
             } else {
                 this.setState({
                     authed: false,
                     loading: false
-                })
+                });
+                $('#idS101').css({ display: 'none' });
+                $('#idS102').css({ display: 'none' });
+                $('#idS103').css({ display: 'none' });
+                $('#idS104').css({ display: 'none' });
+                $('#allRoom').css({ display: 'block' });
             }
         })
     }
@@ -229,81 +119,100 @@ export default class Home extends Component {
                     <div id="inTurnBlurringTextG_6" className="inTurnBlurringTextG">n</div>
                     <div id="inTurnBlurringTextG_7" className="inTurnBlurringTextG">g</div>
                 </div>
-            </div> : (
-                <div className="content container">
-                    <div className="docs-example">
-                        <div className="container">
-                            <div className="col">
-                                <div className="row">
-                                    <div className="col-4">
-                                        {/* boxฝังซ้าย */}
-                                        <div className="container">
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    {/* ช่องlogin and logout */}
-                                                    <div className="col-auto">
-                                                        <BrowserRouter>
-                                                            <Switch>
-                                                                {this.state.authed
-                                                                    ? <PrivateRoute authed={this.state.authed} exact component={fLogin} />
-                                                                    : <PublicRoute authed={this.state.authed} exact component={Login} />}
-                                                            </Switch>
-                                                        </BrowserRouter>
-                                                    </div>
+            </div> :
+            <div className="content container">
+                <div className="docs-example">
+                    <div className="container">
+                        <div className="col">
+                            <div className="row">
+                                <div className="col-3">
+                                    {/* boxฝังซ้าย */}
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                {/* ช่องlogin and logout */}
+                                                <div className="col-auto">
+                                                    <BrowserRouter>
+                                                        <Switch>
+                                                            {this.state.authed
+                                                                ? <PrivateRoute authed={this.state.authed} exact component={fLogin} />
+                                                                : <PublicRoute authed={this.state.authed} exact component={Login} />}
+                                                        </Switch>
+                                                    </BrowserRouter>
                                                 </div>
                                             </div>
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    {/* ช่องเลือกตึก */}
-                                                    <div className="col-auto">b</div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                {/* ช่องเลือกตึก */}
+                                                <div className="col-auto">
+                                                    <center>
+                                                        <h3>
+                                                            กรุณาเลือกตึก
+                                                            <hr />
+                                                        </h3>
+                                                        <Dropdown options={options} onChange={this._onSelect}  placeholder="เลื่อกตึก" />
+                                                    </center>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-8">
-                                        {/* boxฝังขวา */}
-                                        <div className="container">
-                                            <div className="row">
-                                                {/* ช่องตึก */}
-                                                <div className="col-12">a</div>
+                                </div>
+                                <div className="col-9"  >
+                                    {/* boxฝังขวา */}
+                                    <div id='idS101' style={{ display: 'none' }}>
+                                        <S101Page />
+                                    </div>
+                                    <div id='idS102' style={{ display: 'none' }}>
+                                        <S102Page />
+                                    </div>
+                                    <div id='idS103' style={{ display: 'none' }}>
+                                        <S103Page />
+                                    </div>
+                                    <div id='idS104' style={{ display: 'none' }}>
+                                        <S104Page />
+                                    </div>
+                                    <div className="container" id='allRoom' style={{ display: 'block' }}>
+                                        <div className="row">
+                                            {/* ช่องตึก */}
+                                            <div className="col-12">
+                                                <center>ตึก S</center>
                                             </div>
-                                            <div className="row">
-                                                <div className="col-12">
-                                                    <div className="container">
-                                                        <div className="row">
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="container">
+                                                    {this.state.authed
+                                                        ? <div className="row">
                                                             {/* ช่องroom */}
-                                                            <div className="col-3" onClick={() => this.setState({ showS101Page: true })}>
+                                                            <div className="col-3" onClick={() => goS101()}>
                                                                 <S101 />
-                                                            </div>{showS101Page ? (
-                                                                <Modol onClose={() => this.setState({ showS101Page: false })}>
-                                                                    <div id="container">
-                                                                        <S101Page />
-                                                                    </div>
-                                                                </Modol>
-                                                            ) : null}
-                                                            {/* <div className="col-3" onClick={() => this.setState({ showS102Page: true })}>
+                                                            </div>
+                                                            <div className="col-3" onClick={() => goS102()}>
                                                                 <S102 />
-                                                            </div>{showS102Page ? (
-                                                                <Modol onClose={() => this.setState({ showS102Page: false })}>
-                                                                    <S102Page />
-                                                                </Modol>
-                                                            ) : null}
-                                                            <div className="col-3" onClick={() => this.setState({ showS103Page: true })}>
+                                                            </div>
+                                                            <div className="col-3" onClick={() => goS103()}>
                                                                 <S103 />
-                                                            </div>{showS103Page ? (
-                                                                <Modol onClose={() => this.setState({ showS103Page: false })}>
-                                                                    <S103Page />
-                                                                </Modol>
-                                                            ) : null}
-                                                            <div className="col-3" onClick={() => this.setState({ showS104Page: true })}>
+                                                            </div>
+                                                            <div className="col-3" onClick={() => goS104()}>
                                                                 <S104 />
-                                                            </div>{showS104Page ? (
-                                                                <Modol onClose={() => this.setState({ showS104Page: false })}>
-                                                                    <S104Page />
-                                                                </Modol>
-                                                            ) : null} */}
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        : <div className="row">
+                                                            {/* ช่องroom */}
+                                                            <div className="col-3" >
+                                                                <S101 />
+                                                            </div>
+                                                            <div className="col-3" >
+                                                                <S102 />
+                                                            </div>
+                                                            <div className="col-3" >
+                                                                <S103 />
+                                                            </div>
+                                                            <div className="col-3">
+                                                                <S104 />
+                                                            </div>
+                                                        </div>}
                                                 </div>
                                             </div>
                                         </div>
@@ -313,6 +222,8 @@ export default class Home extends Component {
                         </div>
                     </div>
                 </div>
-            )
+            </div>
+
     }
 }
+

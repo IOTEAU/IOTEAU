@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Home from './Component/Home'
-import S101Page from './Component/S101Page';
-import FormPage from './Component/FormPage';
+
 
 export default class App extends Component {
   
@@ -9,7 +8,8 @@ export default class App extends Component {
   
           return (
               <div>
-                  <S101Page/>
+                  <Home/>
+                  
               </div>
           )
       }

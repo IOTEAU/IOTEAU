@@ -8,15 +8,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 function name() {
     var para;
     var num1 = dbFirebase.ref().child('energy'); //เปลี่ยนค่าตัวเลข มาแสดงกราฟ
-    num1.on('child_added', function (snapshot) {
+    num1.on('child_added', function(snapshot) {
         para = snapshot.val();
-        // console.log(para)
+        console.log(para)
 
     });
     return para
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
     Highcharts.setOptions({
         global: {
             useUTC: false
@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     var numPerple = dbFirebase.ref('UserinRoom');
-    var numPerples = numPerple.on('value', function (snapshot) {
+    var numPerples = numPerple.on('value', function(snapshot) {
         // conssole.log("UserinRoom:" + snapshot.val());
         var snap = snapshot.val();
 
@@ -35,14 +35,14 @@ $(document).ready(function () {
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
-                    load: function () {
+                    load: function() {
 
                         // set up the updating of the chart each second
                         var series = this.series[0];
-                        setInterval(function () {
+                        setInterval(function() {
                             var x = (new Date()).getTime(), // current time
                                 y = name();
-                            series.addPoint([x, y], true, true);
+                            // series.addPoint([x, y], true, true);
                         }, 1000);
                     }
                 }
@@ -66,7 +66,7 @@ $(document).ready(function () {
                 }]
             },
             tooltip: {
-                formatter: function () {
+                formatter: function() {
                     return '<b>' + this.series.name + '</b><br/>' +
                         Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
                         Highcharts.numberFormat(this.y, 2);
@@ -80,7 +80,7 @@ $(document).ready(function () {
             },
             series: [{
                 name: 'Random data',
-                data: (function () {
+                data: (function() {
 
 
                     // generate an array of random data
@@ -101,11 +101,16 @@ $(document).ready(function () {
     });
 });
 
+
+
+// console.log(name());
+
+
 export var Graph = React.createClass({
     render: function () {
         return (
             <div id="container">
-                    <script>document.write('Highcharts'); document.write('current');</script>
+                <script>document.write('Highcharts'); document.write('current');</script>
             </div>
         )
     }
