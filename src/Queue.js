@@ -1,6 +1,8 @@
+import { dbFirebase } from "./Config/connectFirebase";
+ 
  var stac = [];
 
- function addArr(num) {
+ export function addArr(num) {
 
      var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
      var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
@@ -17,9 +19,10 @@
          upToFirebaseRoom2Air2.set(0)
      } else {
          stac.push(num)
+         console.log(stac)
      }
 
-     upToFirebase.set(stac.shift(0));
+    //  upToFirebase.set(stac.shift(0));
      setInterval(function() {
          var valToFirebase = stac.shift()
 

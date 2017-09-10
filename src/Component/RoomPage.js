@@ -4,6 +4,7 @@ import $ from "jquery";
 import { dbFirebase } from "../Config/connectFirebase";
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "../Queue.js";
 
 //
 function goBack() {
@@ -64,40 +65,23 @@ function Light_Row_one() {
   });
 }
 
-var numPerple1 = dbFirebase.ref("room1/air");
+var numPerple1 = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple1.on("value", function(snapshot) {
 document.querySelector("#Light_Row_one > input").checked = snapshot.val();
 
 
-if (numPerples == 0) {
-    
-} else if (condition) {
-    
-{
-    
+  // var snap1 = snapshot.val();
+  // var num1 = 0;
+  // var AIRS101;
+  // if (snap1 <= num1) {
+  //   $("#Light_Row_one").prop('checked',false);
 
+  // } else {
+  //   $("#Light_Row_one").prop('checked',true);
+  // }
 
-
-  var snap1 = snapshot.val();
-  var num1 = 0;
-  var AIRS101;
-  if (snap1 <= num1) {
-    AIRS101 = $("#button").css({ display: "block" });
-    AIRS101[1];
-
-    AIRS101 = $("#button1").css({ display: "none" });
-    //S AIRS101 //
-    AIRS101[1];
-  } else {
-    AIRS101 = $("#button").css({ display: "none" });
-    //S101 AIRS101 //testSensor
-    AIRS101[1];
-
-    AIRS101 = $("#button1").css({ display: "block" });
-    //S101 LED //
-    AIRS101[1];
-  }
 });
+
 
 export var S101Page = React.createClass({
   render: function() {
@@ -144,12 +128,12 @@ export var S101Page = React.createClass({
                       <h4>เครื่องปรับอากาศ</h4>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onClick="addArr(1)" type="checkbox" />
+                      <input onClick={() => addArr(1)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onClick="addArr(2)" type="checkbox" />
+                      <input onClick={() => addArr(2)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                     </center>
@@ -212,12 +196,12 @@ export var S102Page = React.createClass({
                       <h4>เครื่องปรับอากาศ</h4>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onclick="addArr(3)" type="checkbox" />
+                        <input onclick={() => addArr(3)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onclick="addArr(4)" type="checkbox" />
+                        <input onclick={() => addArr(4)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                     </center>
@@ -231,3 +215,57 @@ export var S102Page = React.createClass({
     );
   }
 });
+
+var stac = [];
+
+function addArr(num) {
+
+     var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+     var dataFirebase =upToFirebaseRoom1Air1.on("value",function(snapshot){
+        console.log(dataFirebase)
+     });
+
+     
+     var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
+     var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+     var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+         //เช็คเพื่อปิด แอร์ ทั่ง room1 - room2
+     if (upToFirebaseRoom1Air1 == 1 && num == 1) {
+         upToFirebaseRoom1Air1.set(0)
+     } else if (upToFirebaseRoom1Air2 == 2 && num == 2) {
+         upToFirebaseRoom1Air2.set(0)
+     } else if (upToFirebaseRoom2Air1 == 3 && num == 3) {
+         upToFirebaseRoom2Air1.set(0)
+     } else if (upToFirebaseRoom2Air2 == 4 && num == 4) {
+         upToFirebaseRoom2Air2.set(0)
+     } else {
+         stac.push(num)
+        
+     }
+     var valToFirebase = 0;
+
+  
+     setInterval(function(){
+      valToFirebase = stac.shift()
+     },15000)
+     
+
+    setInterval(function() {
+          // valToFirebase = stac.shift()
+          
+
+     
+          if (valToFirebase == 1) {
+            upToFirebaseRoom1Air1.set(valToFirebase)
+        }  if (valToFirebase == 2) {
+            upToFirebaseRoom1Air2.set(valToFirebase)
+        }  if (valToFirebase == 3) {
+            upToFirebaseRoom2Air1.set(valToFirebase)
+        }  if (valToFirebase == 4) {
+            upToFirebaseRoom2Air2.set(valToFirebase)
+        }
+     }, 1500);
+    
+     
+     console.log(stac)
+ }
