@@ -4,7 +4,7 @@ import { dbFirebase } from '../Config/connectFirebase'
 import RoomPage from '../Component/RoomPage'
 import 'bootstrap/dist/css/bootstrap.css';
 
-var numPerple = dbFirebase.ref('UserinRoom');
+var numPerple = dbFirebase.ref('room1/UserinRoom');
 var numPerples = numPerple.on('value', function (snapshot) {
 
     // console.log("Airtwo:" + snapshot.val());
@@ -32,30 +32,6 @@ var numPerples = numPerple.on('value', function (snapshot) {
 
     $('#userinRoomS101').text(snap);
 });
-
-var numPerple1 = dbFirebase.ref('air');
-var numPerples = numPerple1.on('value', function (snapshot) {
-    var snap1 = snapshot.val();
-    var num1 = 0
-    var AIRS101
-    if (snap1 <= num1) {
-        AIRS101 = $("#button").css({ display: "block" });
-        AIRS101[1];
-
-        AIRS101 = $("#button1").css({ display: 'none' });
-        //S AIRS101 //
-        AIRS101[1];
-    } else {
-        AIRS101 = $("#button").css({ display: 'none' });
-        //S101 AIRS101 //testSensor
-        AIRS101[1];
-
-        AIRS101 = $("#button1").css({ display: "block" });
-        //S101 LED //
-        AIRS101[1];
-    }
-});
-
 //random เข้า Firebase
 // var num = dbFirebase.ref('num');
 // setInterval(function() {
