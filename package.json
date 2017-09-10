@@ -8,6 +8,7 @@
     "highcharts": "^5.0.14",
     "highcharts-exporting": "^0.1.2",
     "jquery": "^3.2.1",
+    "popper.js": "^1.12.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",

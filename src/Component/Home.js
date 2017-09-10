@@ -13,7 +13,9 @@ import { S101Page, S102Page } from "../Component/RoomPage";
 import "../loading.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../docs.css";
-
+import 'jquery/dist/jquery';
+import('popper.js/dist/umd/popper');
+import ('bootstrap/dist/js/bootstrap');
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
     <Route
