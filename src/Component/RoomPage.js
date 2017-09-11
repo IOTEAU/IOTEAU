@@ -224,7 +224,7 @@ console.log(num)
 
 
    var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
-   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air1")
+   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
    var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
    var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
 

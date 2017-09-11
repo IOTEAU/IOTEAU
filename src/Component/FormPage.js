@@ -71,6 +71,36 @@ export var S101 = React.createClass({
     }
 });
 
+
+var numPerple2 = dbFirebase.ref('room2/UserinRoom');
+var numPerples2 = numPerple2.on('value', function (snapshot) {
+
+    // console.log("Airtwo:" + snapshot.val());
+    var snap = snapshot.val();
+    var num0 = 0;
+    var LED
+    var AIR
+    if (snap <= num0) {
+        LED = $("#s102button").css({ display: 'block' });
+        //S LED //
+        LED[0];
+
+        AIR = $("#s102button1").css({ display: 'none' });
+        //S AIR //
+        AIR[0];
+    } else {
+        LED = $("#s102button").css({ display: 'none' });
+        //S101 LED //testSensor
+        LED[0];
+
+        AIR = $("#s102button1").css({ display: "block" });
+        //S101 LED //
+        AIR[0];
+    }
+
+    $('#userinRoomS102').text(snap);
+});
+
 export var S102 = React.createClass({
     render: function () {
         return (
@@ -82,14 +112,14 @@ export var S102 = React.createClass({
                             <hr />
                             <h4>แสงสว่าง</h4>
                             <div>
-                                <button id="button"></button>
-                                <button id="button1" style={{ display: 'none' }}></button>
+                                <button id="s102button"></button>
+                                <button id="s102button1" style={{ display: 'none' }}></button>
                             </div>
                             <br></br>
                             <h4>เครื่องปรับอากาศ </h4>
                             <div>
-                                <button id="button"></button>
-                                <button id="button1" style={{ display: 'none' }}></button>
+                                <button id="s102button"></button>
+                                <button id="s102button1" style={{ display: 'none' }}></button>
                             </div>
                             <br></br>
                             <h4>จำนวนคน <p id="userinRoomS102">0</p></h4>
