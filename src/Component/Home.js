@@ -13,9 +13,9 @@ import { S101Page, S102Page } from "../Component/RoomPage";
 import "../loading.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../docs.css";
-import 'jquery/dist/jquery';
+import('jquery/dist/jquery');
 import('popper.js/dist/umd/popper');
-import ('bootstrap/dist/js/bootstrap');
+import('bootstrap/dist/js/bootstrap');
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
     <Route
@@ -211,10 +211,14 @@ export default class Home extends Component {
                                 <S101 />
                               </div>
                             }
-                            {/* {this.state.authed
-                                                            ?<div className="col-3" onClick={() => goS102()}>
-                                                                <S102 />
-                                                            </div>} */}
+                            {this.state.authed}
+                            
+                            <div className="col-3" onClick={() => goS102()}>
+                                <S102 />
+                                <div className="col-3">
+
+                                                            
+                              </div>
                           </div>
                         </div>
                       </div>
@@ -225,6 +229,7 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }
