@@ -196,12 +196,12 @@ export var S102Page = React.createClass({
                       <h4>เครื่องปรับอากาศ</h4>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onclick={() => addArr(3)} type="checkbox" />
+                        <input onClick={() => addArr(3)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                       <br />
                       <label className="switch" id="Airone">
-                        <input onclick={() => addArr(4)} type="checkbox" />
+                        <input onClick={() => addArr(4)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                     </center>
@@ -220,65 +220,87 @@ var stac = [];
 
 function addArr(num) {
 
-   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
-   var dataFirebase =upToFirebaseRoom1Air1.on("value",function(snapshot){
-      console.log(dataFirebase)
-   });
+console.log(num)
 
 
    var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
+   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air1")
    var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
    var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
-  //เช็คเพื่อปิด แอร์ ทั่ง room1 - room2
-  if (upToFirebaseRoom1Air1 == 1 && num == 1) {
-    upToFirebaseRoom1Air1.set(0)
-  } else if (upToFirebaseRoom1Air2 == 2 && num == 2) {
-    upToFirebaseRoom1Air2.set(0)
-  } else if (upToFirebaseRoom2Air1 == 3 && num == 3) {
-    upToFirebaseRoom2Air1.set(0)
-  } else if (upToFirebaseRoom2Air2 == 4 && num == 4) {
-    upToFirebaseRoom2Air2.set(0)
-  } else {
+
+  
+
+
+ 
     stac.push(num)
 
-  }
+  
   var valToFirebase = 0;
   var i = 0;
 
-  // setInterval(function () {
-  //   valToFirebase = stac.shift()
-  // }, 5000)
-
+ 
 
   setInterval(function () {
-    // valToFirebase = stac.shift()
+    
 
 i +=1
 
-    // if (valToFirebase == 1) {
-    //   upToFirebaseRoom1Air1.set(valToFirebase)
-    // } if (valToFirebase == 2) {
-    //   upToFirebaseRoom1Air2.set(valToFirebase)
-    // } if (valToFirebase == 3) {
-    //   upToFirebaseRoom2Air1.set(valToFirebase)
-    // } if (valToFirebase == 4) {
-    //   upToFirebaseRoom2Air2.set(valToFirebase)
-    // }
 
     if(i == 2){
-      console.log(stac[0] )
+      var gg =stac[0] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
+      
     }
     if(i == 7){
-      console.log(stac[1] )
+      var gg =stac[1] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
     }
     if(i == 12){
-      console.log(stac[3] )
+      var gg =stac[2] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
     }
     if(i == 17){
-      console.log(stac[4] )
+      var gg =stac[3] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
     }
   }, 2000);
 
 
-//   console.log(stac)
+console.log(stac)
 }
