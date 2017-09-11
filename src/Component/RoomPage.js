@@ -6,7 +6,7 @@ import "../index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Queue.js";
 
-//
+// การเรียกค่า
 function goBack() {
   $("#idS101").css({ display: "none" });
   $("#idS102").css({ display: "none" });
@@ -14,7 +14,7 @@ function goBack() {
   $("#idS104").css({ display: "none" });
   $("#allRoom").css({ display: "block" });
 }
-
+// ประกาศตัวแปร
 var numPerple = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple.on("value", function (snapshot) {
   // console.log("Airtwo:" + snapshot.val());
@@ -22,11 +22,11 @@ var numPerples = numPerple.on("value", function (snapshot) {
   var num0 = 0;
   var LED;
   var AIR;
+  // เงื่อนไขในการทำงานของระบบไฟ
   if (snap <= num0) {
     LED = $("#button").css({ display: "block" });
     //S LED //
     LED[0];
-
     AIR = $("#button1").css({ display: "none" });
     //S AIR //
     AIR[0];
@@ -40,6 +40,7 @@ var numPerples = numPerple.on("value", function (snapshot) {
     AIR[0];
   }
 
+  // การทำงานของ S101
   $("#userinRoomS101").text(snap);
 });
 var change = 0;
@@ -87,7 +88,7 @@ var numPerples = numPerple1.on("value", function (snapshot) {
 
 
 
-
+// การทำงานระบบไฟฟ้าและแอร์ ในห้อง S101
 export var S101Page = React.createClass({
   render: function () {
     return (
@@ -153,6 +154,7 @@ export var S101Page = React.createClass({
   }
 });
 
+// การทำงานระบบไฟฟ้าและแอร์ ในห้อง S102
 export var S102Page = React.createClass({
   render: function () {
     return (
@@ -228,6 +230,7 @@ function addArr(num) {
 console.log(num)
 
 
+// การกำหนดตัวแปรของแอร์
    var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
    var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
    var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
@@ -251,6 +254,7 @@ console.log(num)
 i +=1
 
 
+// เงื่อนไขในการเช็คค่า
     if(i == 2){
       var gg =stac[0] 
       if (gg == 1) {

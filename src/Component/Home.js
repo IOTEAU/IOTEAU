@@ -45,17 +45,20 @@ function PublicRoute({ component: Component, authed, ...rest }) {
   );
 }
 
+// การทำงานของห้อง S101
 function goS101() {
   $("#idS101").css({ display: "block" });
   $("#allRoom").css({ display: "none" });
 }
+// การทำงานของห้อง S102
 function goS102() {
   $("#idS102").css({ display: "block" });
   $("#allRoom").css({ display: "none" });
 }
-
+//  การเลือกตึก
 const options = ["ตึก A", "ตึก C", "ตึก S", "ตึก M"];
 
+// เงื่อนไขในการเช็คค่า
 export default class Home extends Component {
   state = {
     authed: false,

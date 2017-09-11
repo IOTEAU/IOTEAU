@@ -22,13 +22,13 @@ $(document).ready(function() {
             useUTC: false
         }
     });
-
+// ประกาศตัวแปรของการรียกกราฟ
     var numPerple = dbFirebase.ref('UserinRoom');
     var numPerples = numPerple.on('value', function(snapshot) {
         // conssole.log("UserinRoom:" + snapshot.val());
         var snap = snapshot.val();
 
-
+// การแสดงกราฟ ในการทำงาน
         Highcharts.chart('container', {
             chart: {
                 type: 'spline',
@@ -105,7 +105,7 @@ $(document).ready(function() {
 
 // console.log(name());
 
-
+// แสดงผลค่ากราฟ
 export var Graph = React.createClass({
     render: function () {
         return (
