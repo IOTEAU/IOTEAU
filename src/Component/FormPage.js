@@ -32,6 +32,12 @@ var numPerples = numPerple.on('value', function (snapshot) {
 
     $('#userinRoomS101').text(snap);
 });
+
+var numPerple1 = dbFirebase.ref('room2/UserinRoom');
+var numPerples1 = numPerple1.on('value', function (snapshot) {
+    $('#userinRoomS102').text(snapshot.val());
+
+});
 //random เข้า Firebase
 // var num = dbFirebase.ref('num');
 // setInterval(function() {
