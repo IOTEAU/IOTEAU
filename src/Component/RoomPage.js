@@ -70,6 +70,11 @@ var numPerples = numPerple1.on("value", function (snapshot) {
   document.querySelector("#Light_Row_one > input").checked = snapshot.val();
 
 
+});
+  var numPerple2 = dbFirebase.ref("room2/UserinRoom");
+  var numPerples2 = numPerple2.on("value", function (snapshot) {
+    document.querySelector("#Light_Row_one1 > input").checked = snapshot.val();
+  });
   // var snap1 = snapshot.val();
   // var num1 = 0;
   // var AIRS101;
@@ -80,7 +85,7 @@ var numPerples = numPerple1.on("value", function (snapshot) {
   //   $("#Light_Row_one").prop('checked',true);
   // }
 
-});
+
 
 
 export var S101Page = React.createClass({
@@ -177,9 +182,9 @@ export var S102Page = React.createClass({
                       />
                       <h4>แสงสว่าง</h4>
                       <br />
-                      <label className="switch" id="Light_Row_one">
+                      <label className="switch" id="Light_Row_one1">
                         <input
-                          onclick="Light_Row_one.set(+this.checked)"
+                          onclick="Light_Row_one1.set(+this.checked)"
                           type="checkbox"
                         />
                         <div className="slider round" />
@@ -224,7 +229,7 @@ console.log(num)
 
 
    var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
-   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air1")
+   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
    var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
    var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
 
