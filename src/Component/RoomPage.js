@@ -16,7 +16,7 @@ function goBack() {
 }
 
 var numPerple = dbFirebase.ref("room1/UserinRoom");
-var numPerples = numPerple.on("value", function(snapshot) {
+var numPerples = numPerple.on("value", function (snapshot) {
   // console.log("Airtwo:" + snapshot.val());
   var snap = snapshot.val();
   var num0 = 0;
@@ -44,30 +44,30 @@ var numPerples = numPerple.on("value", function(snapshot) {
 });
 var change = 0;
 var upnum = 0;
-var snap =0;
+var snap = 0;
 function Light_Row_one() {
-  upnum +=1;
+  upnum += 1;
   var numPerple = dbFirebase.ref("room1/UserinRoom");
-  var numPerples = numPerple.set((upnum) , function(snapshot) {
-    
+  var numPerples = numPerple.set((upnum), function (snapshot) {
+
     // var snap = snapshot.val();
-    if(upnum == 0){
-        upnum == 0
+    if (upnum == 0) {
+      upnum == 0
     }
-    if(upnum == 1){
-        snap >= 1
+    if (upnum == 1) {
+      snap >= 1
     }
-    if(upnum == 2){
-        upnum -=0;
+    if (upnum == 2) {
+      upnum -= 0;
     }
-    console.log('upnum: '+upnum);
+    console.log('upnum: ' + upnum);
     // console.log("Airtwo:" +snap);
   });
 }
 
 var numPerple1 = dbFirebase.ref("room1/UserinRoom");
-var numPerples = numPerple1.on("value", function(snapshot) {
-document.querySelector("#Light_Row_one > input").checked = snapshot.val();
+var numPerples = numPerple1.on("value", function (snapshot) {
+  document.querySelector("#Light_Row_one > input").checked = snapshot.val();
 
 
   // var snap1 = snapshot.val();
@@ -84,7 +84,7 @@ document.querySelector("#Light_Row_one > input").checked = snapshot.val();
 
 
 export var S101Page = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <div className="col-12">
         <div className="container">
@@ -113,7 +113,7 @@ export var S101Page = React.createClass({
                       <h4>แสงสว่าง</h4>
                       <br />
                       <label className="switch" id="Light_Row_one">
-                        <input onClick='Light_Row_one.set(+this.checked)' type="checkbox"  />
+                        <input onClick='Light_Row_one.set(+this.checked)' type="checkbox" />
                         <div className="slider round"></div>
                       </label>
                     </center>
@@ -128,12 +128,12 @@ export var S101Page = React.createClass({
                       <h4>เครื่องปรับอากาศ</h4>
                       <br />
                       <label className="switch" id="Airone">
-                      <input onClick={() => addArr(1)} type="checkbox" />
+                        <input onClick={() => addArr(1)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                       <br />
                       <label className="switch" id="Airone">
-                      <input onClick={() => addArr(2)} type="checkbox" />
+                        <input onClick={() => addArr(2)} type="checkbox" />
                         <div className="slider round" />
                       </label>
                     </center>
@@ -149,7 +149,7 @@ export var S101Page = React.createClass({
 });
 
 export var S102Page = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <div className="col-12">
         <div className="container">
@@ -220,52 +220,65 @@ var stac = [];
 
 function addArr(num) {
 
-     var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
-     var dataFirebase =upToFirebaseRoom1Air1.on("value",function(snapshot){
-        console.log(dataFirebase)
-     });
+   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+   var dataFirebase =upToFirebaseRoom1Air1.on("value",function(snapshot){
+      console.log(dataFirebase)
+   });
 
-     
-     var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
-     var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
-     var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
-         //เช็คเพื่อปิด แอร์ ทั่ง room1 - room2
-     if (upToFirebaseRoom1Air1 == 1 && num == 1) {
-         upToFirebaseRoom1Air1.set(0)
-     } else if (upToFirebaseRoom1Air2 == 2 && num == 2) {
-         upToFirebaseRoom1Air2.set(0)
-     } else if (upToFirebaseRoom2Air1 == 3 && num == 3) {
-         upToFirebaseRoom2Air1.set(0)
-     } else if (upToFirebaseRoom2Air2 == 4 && num == 4) {
-         upToFirebaseRoom2Air2.set(0)
-     } else {
-         stac.push(num)
-        
-     }
-     var valToFirebase = 0;
 
-  
-     setInterval(function(){
-      valToFirebase = stac.shift()
-     },15000)
-     
+   var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
+   var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+   var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+  //เช็คเพื่อปิด แอร์ ทั่ง room1 - room2
+  if (upToFirebaseRoom1Air1 == 1 && num == 1) {
+    upToFirebaseRoom1Air1.set(0)
+  } else if (upToFirebaseRoom1Air2 == 2 && num == 2) {
+    upToFirebaseRoom1Air2.set(0)
+  } else if (upToFirebaseRoom2Air1 == 3 && num == 3) {
+    upToFirebaseRoom2Air1.set(0)
+  } else if (upToFirebaseRoom2Air2 == 4 && num == 4) {
+    upToFirebaseRoom2Air2.set(0)
+  } else {
+    stac.push(num)
 
-    setInterval(function() {
-          // valToFirebase = stac.shift()
-          
+  }
+  var valToFirebase = 0;
+  var i = 0;
 
-     
-          if (valToFirebase == 1) {
-            upToFirebaseRoom1Air1.set(valToFirebase)
-        }  if (valToFirebase == 2) {
-            upToFirebaseRoom1Air2.set(valToFirebase)
-        }  if (valToFirebase == 3) {
-            upToFirebaseRoom2Air1.set(valToFirebase)
-        }  if (valToFirebase == 4) {
-            upToFirebaseRoom2Air2.set(valToFirebase)
-        }
-     }, 1500);
-    
-     
-     console.log(stac)
- }
+  // setInterval(function () {
+  //   valToFirebase = stac.shift()
+  // }, 5000)
+
+
+  setInterval(function () {
+    // valToFirebase = stac.shift()
+
+i +=1
+
+    // if (valToFirebase == 1) {
+    //   upToFirebaseRoom1Air1.set(valToFirebase)
+    // } if (valToFirebase == 2) {
+    //   upToFirebaseRoom1Air2.set(valToFirebase)
+    // } if (valToFirebase == 3) {
+    //   upToFirebaseRoom2Air1.set(valToFirebase)
+    // } if (valToFirebase == 4) {
+    //   upToFirebaseRoom2Air2.set(valToFirebase)
+    // }
+
+    if(i == 2){
+      console.log(stac[0] )
+    }
+    if(i == 7){
+      console.log(stac[1] )
+    }
+    if(i == 12){
+      console.log(stac[3] )
+    }
+    if(i == 17){
+      console.log(stac[4] )
+    }
+  }, 2000);
+
+
+//   console.log(stac)
+}
