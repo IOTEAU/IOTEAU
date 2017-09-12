@@ -68,23 +68,30 @@ function Light_Row_one() {
 var numPerple1 = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple1.on("value", function (snapshot) {
   document.querySelector("#Light_Row_one > input").checked = snapshot.val();
+  $('#Light_Row_one').click(function() {
+    numPerples = numPerple1.set('0',function() {
+      
+    })
+  })
+
+  
 
 
+
+  
 });
-  var numPerple2 = dbFirebase.ref("room2/UserinRoom");
+  
+var numPerple2 = dbFirebase.ref("room2/UserinRoom");
   var numPerples2 = numPerple2.on("value", function (snapshot) {
     document.querySelector("#Light_Row_one1 > input").checked = snapshot.val();
+    $('#Light_Row_one1').click(function() {
+      numPerples2 = numPerple2.set('0',function() {
+        
+      })
+    })
+    
+
   });
-  // var snap1 = snapshot.val();
-  // var num1 = 0;
-  // var AIRS101;
-  // if (snap1 <= num1) {
-  //   $("#Light_Row_one").prop('checked',false);
-
-  // } else {
-  //   $("#Light_Row_one").prop('checked',true);
-  // }
-
 
 
 
@@ -221,91 +228,48 @@ export var S102Page = React.createClass({
   }
 });
 
-var stac = [];
 
-function addArr(num) {
+      var queu = [];
 
-console.log(num)
+        function addArr(num) {
+            var status = true;
 
 
-   var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
-   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
-   var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
-   var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
 
-  
+            if (queu.length < 2) {
+                queu.push(num)
+            } else {
+                outQueue()
+            }
 
+            console.log(queu)
+            console.log(queu.length)
+
+
+        }
+
+        function outQueue() {
+
+          var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
+          var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+          var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+          var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+       
+            setInterval(() => {
+                var dataOutQueue = queu.shift()
+                if (dataOutQueue == 1) {
+                  upToFirebaseRoom1Air1.set(dataOutQueue)
+                } else if(dataOutQueue == 2){
+                  upToFirebaseRoom1Air2.set(dataOutQueue)
+                }else if(dataOutQueue == 3){
+                  upToFirebaseRoom2Air1.set(dataOutQueue)
+                }else if(dataOutQueue == 4){
+                  upToFirebaseRoom2Air2.set(dataOutQueue)
+                }
+
+                console.log(dataOutQueue)
+            }, 5000)
+        }
 
  
-    stac.push(num)
-
-  
-  var valToFirebase = 0;
-  var i = 0;
-
- 
-
-  setInterval(function () {
-    
-
-i +=1
-
-
-    if(i == 2){
-      var gg =stac[0] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-      
-    }
-    if(i == 7){
-      var gg =stac[1] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-    if(i == 12){
-      var gg =stac[2] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-    if(i == 17){
-      var gg =stac[3] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-  }, 2000);
-
-
-console.log(stac)
-}
+   
