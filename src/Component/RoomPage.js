@@ -6,7 +6,7 @@ import "../index.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../Queue.js";
 
-//
+// การเรียกค่า
 function goBack() {
   $("#idS101").css({ display: "none" });
   $("#idS102").css({ display: "none" });
@@ -14,7 +14,7 @@ function goBack() {
   $("#idS104").css({ display: "none" });
   $("#allRoom").css({ display: "block" });
 }
-
+// ประกาศตัวแปร
 var numPerple = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple.on("value", function (snapshot) {
   // console.log("Airtwo:" + snapshot.val());
@@ -22,11 +22,11 @@ var numPerples = numPerple.on("value", function (snapshot) {
   var num0 = 0;
   var LED;
   var AIR;
+  // เงื่อนไขในการทำงานของระบบไฟ
   if (snap <= num0) {
     LED = $("#button").css({ display: "block" });
     //S LED //
     LED[0];
-
     AIR = $("#button1").css({ display: "none" });
     //S AIR //
     AIR[0];
@@ -40,6 +40,7 @@ var numPerples = numPerple.on("value", function (snapshot) {
     AIR[0];
   }
 
+  // การทำงานของ S101
   $("#userinRoomS101").text(snap);
 });
 var change = 0;
@@ -94,7 +95,7 @@ var numPerple2 = dbFirebase.ref("room2/UserinRoom");
   });
 
 
-
+// การทำงานระบบไฟฟ้าและแอร์ ในห้อง S101
 export var S101Page = React.createClass({
   render: function () {
     return (
@@ -160,6 +161,7 @@ export var S101Page = React.createClass({
   }
 });
 
+// การทำงานระบบไฟฟ้าและแอร์ ในห้อง S102
 export var S102Page = React.createClass({
   render: function () {
     return (
@@ -231,8 +233,19 @@ export var S102Page = React.createClass({
 
       var queu = [];
 
+<<<<<<< HEAD
         function addArr(num) {
             var status = true;
+=======
+
+// การกำหนดตัวแปรของแอร์
+   var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
+   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
+   var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
+   var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
+
+  
+>>>>>>> ea88f22357b42f0cc27f3f9c3783fa73055b3fcc
 
 
 
@@ -250,6 +263,7 @@ export var S102Page = React.createClass({
 
         function outQueue() {
 
+<<<<<<< HEAD
           var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
           var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
           var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
@@ -266,6 +280,63 @@ export var S102Page = React.createClass({
                 }else if(dataOutQueue == 4){
                   upToFirebaseRoom2Air2.set(dataOutQueue)
                 }
+=======
+// เงื่อนไขในการเช็คค่า
+    if(i == 2){
+      var gg =stac[0] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
+      
+    }
+    if(i == 7){
+      var gg =stac[1] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
+    }
+    if(i == 12){
+      var gg =stac[2] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
+    }
+    if(i == 17){
+      var gg =stac[3] 
+      if (gg == 1) {
+        upToFirebaseRoom1Air1.set(gg)
+      }else if(gg == 2){
+        upToFirebaseRoom1Air2.set(gg)
+      }else if(gg == 3){
+        upToFirebaseRoom2Air1.set(gg)
+      }else if (gg == 4) {
+        upToFirebaseRoom2Air2.set(gg)
+    
+      }
+    }
+  }, 2000);
+>>>>>>> ea88f22357b42f0cc27f3f9c3783fa73055b3fcc
 
                 console.log(dataOutQueue)
             }, 5000)

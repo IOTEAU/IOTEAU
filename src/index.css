@@ -1,3 +1,4 @@
+/* หน้าหลัก */
 body {
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body {
 
 
 .switch input {display:none;}
+
 
 .slider {
   position: absolute;

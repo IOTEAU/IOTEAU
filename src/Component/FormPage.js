@@ -4,14 +4,17 @@ import { dbFirebase } from '../Config/connectFirebase'
 import RoomPage from '../Component/RoomPage'
 import 'bootstrap/dist/css/bootstrap.css';
 
+// การประกาศตัวแปร
 var numPerple = dbFirebase.ref('room1/UserinRoom');
 var numPerples = numPerple.on('value', function (snapshot) {
 
     // console.log("Airtwo:" + snapshot.val());
+    // ประกาศตัวแปร
     var snap = snapshot.val();
     var num0 = 0;
     var LED
     var AIR
+    // เงื่อนไขในการทำงาน
     if (snap <= num0) {
         LED = $("#button").css({ display: 'block' });
         //S LED //
@@ -46,7 +49,7 @@ var numPerples1 = numPerple1.on('value', function (snapshot) {
 
 
 
-
+// ห้อง S101
 export var S101 = React.createClass({
     render: function () {
         return (
@@ -82,10 +85,12 @@ var numPerple2 = dbFirebase.ref('room2/UserinRoom');
 var numPerples2 = numPerple2.on('value', function (snapshot) {
 
     // console.log("Airtwo:" + snapshot.val());
+    // ประกาศตัวแปร
     var snap = snapshot.val();
     var num0 = 0;
     var LED
     var AIR
+    // เงื่อนไขการทำงานของระบบ
     if (snap <= num0) {
         LED = $("#s102button").css({ display: 'block' });
         //S LED //
@@ -107,6 +112,7 @@ var numPerples2 = numPerple2.on('value', function (snapshot) {
     $('#userinRoomS102').text(snap);
 });
 
+// ห้อง S102
 export var S102 = React.createClass({
     render: function () {
         return (
@@ -137,6 +143,7 @@ export var S102 = React.createClass({
     }
 });
 
+// ห้อง S103
 export var S103 = React.createClass({
     render: function () {
         return (
@@ -167,6 +174,7 @@ export var S103 = React.createClass({
     }
 });
 
+// ห้อง S104
 export var S104 = React.createClass({
     render: function () {
         return (

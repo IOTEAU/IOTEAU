@@ -7,7 +7,7 @@ function setErrorMsg(error) {
         loginMessage: error
     }
 }
-
+// การเช็คค่า Emil และ password ว่าตรงกับระบบที่ให้ ถ้าตรงให้เข้าสู่ระบบได้ ถ้าไม่ตรงก็ไม่ทำงาน
 export default class Login extends Component {
     state = { loginMessage: null }
     handleSubmit = (e) => {
@@ -17,7 +17,7 @@ export default class Login extends Component {
                 this.setState(setErrorMsg('Invalid username/password.'))
             })
     }
-
+// ฟอร์ม หน้าเข้าสู่ระบบ
     render() {
         return (
             <div>
