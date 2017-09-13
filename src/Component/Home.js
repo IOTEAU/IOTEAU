@@ -94,8 +94,8 @@ export default class Home extends Component {
   }
 
   render() {
-    const { showS101Page } = this.state;
-    const { showS102Page } = this.state;
+    let { showS101Page } = this.state;
+    let { showS102Page } = this.state;
 
     return this.state.loading === true ? (
       //<div>Loadding//
