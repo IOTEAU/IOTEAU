@@ -12,8 +12,7 @@ var numPerples = numPerple.on('value', function (snapshot) {
     // ประกาศตัวแปร
     var snap = snapshot.val();
     var num0 = 0;
-    var LED
-    var AIR
+    var LED;
     // เงื่อนไขในการทำงาน
     if (snap <= num0) {
         LED = $("#button").css({ display: 'block' });
@@ -34,12 +33,12 @@ var numair = dbFirebase.ref('room1/air');
 var numair = numair.on('value',function(snapshot){
 var numair = snapshot.val();   
 var air0 = 0;
-var AIR
+var AIR;
 if (numair <= air0){
-   AIR = $("#button").css({display:'none'});
+   AIR = $("#button").css({display:'block'});
    AIR[1];
   }else{
-    AIR = $("#button1").css({display:'block'});
+    AIR = $("#button1").css({display:'none'});
     AIR[1];
   }
 
@@ -98,25 +97,16 @@ var numPerples2 = numPerple2.on('value', function (snapshot) {
     // ประกาศตัวแปร
     var snap = snapshot.val();
     var num0 = 0;
-    var LED
-    var AIR
+    var LED;
     // เงื่อนไขการทำงานของระบบ
     if (snap <= num0) {
         LED = $("#s102button").css({ display: 'block' });
         //S LED //
-        LED[0];
-
-        AIR = $("#s102button1").css({ display: 'none' });
-        //S AIR //
         AIR[0];
     } else {
         LED = $("#s102button").css({ display: 'none' });
         //S101 LED //testSensor
         LED[0];
-
-        AIR = $("#s102button1").css({ display: "block" });
-        //S101 LED //
-        AIR[0];
     }
 
     $('#userinRoomS102').text(snap);
