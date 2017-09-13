@@ -91,8 +91,7 @@ export default class Home extends Component {
                 });
                 $('#idS101').css({ display: 'none' });
                 $('#idS102').css({ display: 'none' });
-                $('#idS103').css({ display: 'none' });
-                $('#idS104').css({ display: 'none' });
+               
                 $('#allRoom').css({ display: 'block' });
             }
         })
@@ -105,8 +104,7 @@ export default class Home extends Component {
 
         const { showS101Page } = this.state;
         const { showS102Page } = this.state;
-        const { showS103Page } = this.state;
-        const { showS104Page } = this.state;
+       
 
         return this.state.loading === true ?
             <div className="text-center" style={{ padding: '20%' }}>
@@ -166,12 +164,7 @@ export default class Home extends Component {
                                     <div id='idS102' style={{ display: 'none' }}>
                                         <S102Page />
                                     </div>
-                                    <div id='idS103' style={{ display: 'none' }}>
-                                        <S103Page />
-                                    </div>
-                                    <div id='idS104' style={{ display: 'none' }}>
-                                        <S104Page />
-                                    </div>
+                                  
                                     <div className="container" id='allRoom' style={{ display: 'block' }}>
                                         <div className="row">
                                             {/* ช่องตึก */}
@@ -191,12 +184,7 @@ export default class Home extends Component {
                                                             <div className="col-3" onClick={() => goS102()}>
                                                                 <S102 />
                                                             </div>
-                                                            <div className="col-3" onClick={() => goS103()}>
-                                                                <S103 />
-                                                            </div>
-                                                            <div className="col-3" onClick={() => goS104()}>
-                                                                <S104 />
-                                                            </div>
+                                                         
                                                         </div>
                                                         : <div className="row">
                                                             {/* ช่องroom */}
@@ -206,12 +194,7 @@ export default class Home extends Component {
                                                             <div className="col-3" >
                                                                 <S102 />
                                                             </div>
-                                                            <div className="col-3" >
-                                                                <S103 />
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <S104 />
-                                                            </div>
+                                                         
                                                         </div>}
                                                 </div>
                                             </div>
