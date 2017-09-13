@@ -92,6 +92,9 @@ input:checked + .slider:before {
     
 }
 
+
+
+
 #s102button {
   background-color: red; 
   border: none;

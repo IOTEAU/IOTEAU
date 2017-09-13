@@ -32,10 +32,27 @@ var numPerples = numPerple.on('value', function (snapshot) {
         //S101 LED //
         AIR[0];
     }
-
     $('#userinRoomS101').text(snap);
+    
 });
 
+
+
+var numair = dbFirebase.ref('room1/air');
+var numair = numair.on('value',function(snapshot){
+var numair = snapshot.val();   
+var air0 = 0;
+
+if (numair <= air0){
+    $("button").css({display:'none'});
+     
+  }else{
+     $("button1").css({display:'block'});
+  }
+
+});
+
+//รับค่า userroom2//
 var numPerple1 = dbFirebase.ref('room2/UserinRoom');
 var numPerples1 = numPerple1.on('value', function (snapshot) {
     $('#userinRoomS102').text(snapshot.val());
@@ -142,6 +159,19 @@ export var S102 = React.createClass({
         )
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ห้อง S103
 export var S103 = React.createClass({
