@@ -233,27 +233,25 @@ export var S102Page = React.createClass({
 
       var queu = [];
 
-<<<<<<< HEAD
         function addArr(num) {
-            var status = true;
-=======
-
-// การกำหนดตัวแปรของแอร์
-   var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
-   var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
-   var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
-   var upToFirebaseRoom2Air2 = dbFirebase.ref("room2/air1")
-
-  
->>>>>>> ea88f22357b42f0cc27f3f9c3783fa73055b3fcc
+            // var status = true;
 
 
 
             if (queu.length < 2) {
+
+
                 queu.push(num)
-            } else {
-                outQueue()
-            }
+
+            } if (queu.length ==2 ) {
+
+              outQueue()
+              
+            } 
+
+               
+
+            
 
             console.log(queu)
             console.log(queu.length)
@@ -263,7 +261,6 @@ export var S102Page = React.createClass({
 
         function outQueue() {
 
-<<<<<<< HEAD
           var upToFirebaseRoom1Air2 = dbFirebase.ref("room1/air1")
           var upToFirebaseRoom1Air1 = dbFirebase.ref("room1/air")
           var upToFirebaseRoom2Air1 = dbFirebase.ref("room2/air")
@@ -280,63 +277,6 @@ export var S102Page = React.createClass({
                 }else if(dataOutQueue == 4){
                   upToFirebaseRoom2Air2.set(dataOutQueue)
                 }
-=======
-// เงื่อนไขในการเช็คค่า
-    if(i == 2){
-      var gg =stac[0] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-      
-    }
-    if(i == 7){
-      var gg =stac[1] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-    if(i == 12){
-      var gg =stac[2] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-    if(i == 17){
-      var gg =stac[3] 
-      if (gg == 1) {
-        upToFirebaseRoom1Air1.set(gg)
-      }else if(gg == 2){
-        upToFirebaseRoom1Air2.set(gg)
-      }else if(gg == 3){
-        upToFirebaseRoom2Air1.set(gg)
-      }else if (gg == 4) {
-        upToFirebaseRoom2Air2.set(gg)
-    
-      }
-    }
-  }, 2000);
->>>>>>> ea88f22357b42f0cc27f3f9c3783fa73055b3fcc
 
                 console.log(dataOutQueue)
             }, 5000)
