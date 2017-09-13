@@ -13,6 +13,8 @@ import { S101Page, S102Page } from "../Component/RoomPage";
 import "../loading.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../docs.css";
+import "../index.css";
+import "./buttonchange.js"
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
     <Route

@@ -14,57 +14,63 @@ function goBack() {
   $("#idS104").css({ display: "none" });
   $("#allRoom").css({ display: "block" });
 }
-// ประกาศตัวแปร
+//จำนวนคน s101
 var numPerple = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple.on("value", function (snapshot) {
-  // console.log("Airtwo:" + snapshot.val());
+
+  var snap = snapshot.val();
+  var num0 = 0;
+  var LED;
+  var AIR;
+
+  if (snap <= num0) {
+    LED = $("#button").css({ display: "block" });
+   
+    LED[0];
+    AIR = $("#button1").css({ display: "none" });
+  
+    AIR[0];
+  } else {
+    LED = $("#button").css({ display: "none" });
+  
+    LED[0];
+
+    AIR = $("#button1").css({ display: "block" });
+ 
+    AIR[0];
+  }
+  $("#userinRoomS101").text(snap);
+});
+
+//จำนวนคนs102//
+var numPerple = dbFirebase.ref("room2/UserinRoom");
+var numPerples = numPerple.on("value", function (snapshot) {
+
   var snap = snapshot.val();
   var num0 = 0;
   var LED;
   var AIR;
   // เงื่อนไขในการทำงานของระบบไฟ
   if (snap <= num0) {
-    LED = $("#button").css({ display: "block" });
+    LED = $("s102button").css({ display: "block" });
     //S LED //
     LED[0];
-    AIR = $("#button1").css({ display: "none" });
+    AIR = $("s102button1").css({ display: "none" });
     //S AIR //
     AIR[0];
   } else {
-    LED = $("#button").css({ display: "none" });
+    LED = $("s102button").css({ display: "none" });
     //S101 LED //testSensor
     LED[0];
 
-    AIR = $("#button1").css({ display: "block" });
+    AIR = $("s102button1").css({ display: "block" });
     //S101 LED //
     AIR[0];
   }
-
-  // การทำงานของ S101
-  $("#userinRoomS101").text(snap);
+  $("#userinRoomS102").text(snap);
 });
-var change = 0;
-var upnum = 0;
-var snap = 0;
-function Light_Row_one() {
-  upnum += 1;
-  var numPerple = dbFirebase.ref("room1/UserinRoom");
-  var numPerples = numPerple.set((upnum), function (snapshot) {
 
-    // var snap = snapshot.val();
-    if (upnum == 0) {
-      upnum == 0
-    }
-    if (upnum == 1) {
-      snap >= 1
-    }
-    if (upnum == 2) {
-      upnum -= 0;
-    }
-    console.log('upnum: ' + upnum);
-    // console.log("Airtwo:" +snap);
-  });
-}
+
 
 var numPerple1 = dbFirebase.ref("room1/UserinRoom");
 var numPerples = numPerple1.on("value", function (snapshot) {
@@ -75,11 +81,6 @@ var numPerples = numPerple1.on("value", function (snapshot) {
     })
   })
 
-  
-
-
-
-  
 });
   
 var numPerple2 = dbFirebase.ref("room2/UserinRoom");
@@ -160,6 +161,16 @@ export var S101Page = React.createClass({
     );
   }
 });
+
+
+
+
+
+
+
+
+
+
 
 // การทำงานระบบไฟฟ้าและแอร์ ในห้อง S102
 export var S102Page = React.createClass({
