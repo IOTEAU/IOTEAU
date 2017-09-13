@@ -19,18 +19,10 @@ var numPerples = numPerple.on('value', function (snapshot) {
         LED = $("#button").css({ display: 'block' });
         //S LED //
         LED[0];
-
-        AIR = $("#button1").css({ display: 'none' });
-        //S AIR //
-        AIR[0];
     } else {
         LED = $("#button").css({ display: 'none' });
         //S101 LED //testSensor
         LED[0];
-
-        AIR = $("#button1").css({ display: "block" });
-        //S101 LED //
-        AIR[0];
     }
     $('#userinRoomS101').text(snap);
     
@@ -42,12 +34,13 @@ var numair = dbFirebase.ref('room1/air');
 var numair = numair.on('value',function(snapshot){
 var numair = snapshot.val();   
 var air0 = 0;
-
+var AIR
 if (numair <= air0){
-    $("button").css({display:'none'});
-     
+   AIR = $("#button").css({display:'none'});
+   AIR[1];
   }else{
-     $("button1").css({display:'block'});
+    AIR = $("#button1").css({display:'block'});
+    AIR[1];
   }
 
 });
