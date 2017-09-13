@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Home from './Component/Home';
-
-
-
+import Home from './Component/Home'
+import {S101,S102} from './Component/FormPage'
 
 
 export default class App extends Component {
@@ -13,9 +11,7 @@ export default class App extends Component {
               <div>
                   <Home/>
                   
-                  
               </div>
           )
       }
   }
-  

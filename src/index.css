@@ -1,4 +1,3 @@
-/* หน้าหลัก */
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +13,6 @@ body {
 
 
 .switch input {display:none;}
-
 
 .slider {
   position: absolute;
@@ -63,7 +61,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-#button {
+#btn-LED-off {
     background-color: red; 
     border: none;
     color: white;
@@ -77,7 +75,7 @@ input:checked + .slider:before {
     
 }
 
-#button1 {
+#btn-LED-on {
     background-color:green; 
     border: none;
     color: white;
@@ -92,10 +90,7 @@ input:checked + .slider:before {
     
 }
 
-
-
-
-#s102button {
+.btn-off {
   background-color: red; 
   border: none;
   color: white;
@@ -109,7 +104,7 @@ input:checked + .slider:before {
   
 }
 
-#s102button1 {
+.btn-on {
   background-color:green; 
   border: none;
   color: white;
@@ -123,53 +118,6 @@ input:checked + .slider:before {
   transition-duration: 0.4s;
   
 }
-
-#s101buttonAir1 {
-  background-color: red; 
-  border: none;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; 
-  
-}
-
-#s101buttonAir2 {
-  background-color:green; 
-  border: none;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; 
-  transition-duration: 0.4s;
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #buttoncursor {
     background-color: #4CAF50; /* Green */

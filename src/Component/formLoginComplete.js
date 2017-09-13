@@ -7,7 +7,7 @@ function setErrorMsg(error) {
         loginMessage: error
     }
 }
-// การเช็ค การเข้าสู่ระบบและออกจากระบบ
+
 export default class Login extends Component {
 
     render() {
